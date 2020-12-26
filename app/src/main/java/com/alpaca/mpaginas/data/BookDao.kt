@@ -20,5 +20,8 @@ interface BookDao{
     suspend  fun addBook( book: Book)
 
     @Delete
-    fun delete( person: Book)
+    suspend  fun deleteBook( book: Book)
+
+    @Query ("DELETE FROM book_table")
+    suspend fun deleteAllBooks()
 }

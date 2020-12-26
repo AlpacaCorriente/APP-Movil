@@ -30,4 +30,14 @@ fun updateBook(book: Book){
         repository.updateBook(book)
     }
 }
+    fun deleteBook(book: Book){
+        viewModelScope.launch(Dispatchers.IO ){
+            repository.deleteBook(book)
+        }
+    }
+    fun deleteAllUsers(){
+        viewModelScope.launch(Dispatchers.IO ){
+            repository.deleteAllBooks()
+        }
+    }
 }
