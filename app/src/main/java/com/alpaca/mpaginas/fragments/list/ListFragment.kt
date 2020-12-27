@@ -1,10 +1,13 @@
 package com.alpaca.mpaginas.fragments.list
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -21,7 +24,6 @@ class ListFragment :Fragment(){
     ): View? {
         // Inflate the layout for this fragment
         val view =inflater.inflate(R.layout.fragment_list, container, false)
-
         // Recyclerview
         val adapter=ListAdapter()
         val recyclerView = view.recyclerview
@@ -33,11 +35,32 @@ class ListFragment :Fragment(){
         mBookViewModel.getAllData.observe(viewLifecycleOwner, Observer{ book ->
             adapter.setData(book)
         })
+
         view.floatingActionButton.setOnClickListener{
-             findNavController().navigate(R.id.action_listFragment_to_addFragment)
+            // al apretar el boton de agregar aparece el dialogo
+            addBook()
         }
         return view
     }
 
+    private fun addBook() {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Agregar libro" )
+        builder.setItems(arrayOf("Manualmente", "Buscar"), DialogInterface.OnClickListener{ dialog, which ->
+
+            if(which==0){
+                findNavController().navigate(R.id.action_listFragment_to_addFragment)
+            }
+            else{Toast.makeText(requireContext(), "Buscar", Toast.LENGTH_SHORT).show()}
+
+        })
+
+        builder.create().show()
+
+    }
  }
+
+
+
+
 
