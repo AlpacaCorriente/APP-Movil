@@ -1,2 +1,2 @@
 # APP-Movil
-App desarrollada para la asignatura de AplicacionesMoviles
+App en desarrollo para la asignatura de AplicacionesMoviles
