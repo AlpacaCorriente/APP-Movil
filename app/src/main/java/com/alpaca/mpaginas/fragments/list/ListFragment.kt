@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alpaca.mpaginas.R
+import com.alpaca.mpaginas.model.Book
 import com.alpaca.mpaginas.viewmodel.BookViewModel
 import kotlinx.android.synthetic.main.fragment_list.view.*
 
@@ -43,16 +44,25 @@ class ListFragment :Fragment(){
         return view
     }
 
+    // dialogo para seleccionar como se agregará un libro
     private fun addBook() {
+        val book = Book(
+                id=0,
+                title = "",
+                autor= "",
+                pages = 0,
+                currentPage =0
+        )
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle("Agregar libro" )
         builder.setItems(arrayOf("Manualmente", "Buscar"), DialogInterface.OnClickListener{ dialog, which ->
 
             if(which==0){
-                findNavController().navigate(R.id.action_listFragment_to_addFragment)
+                val action= ListFragmentDirections.actionListFragmentToAddFragment(book)
+                findNavController().navigate(action)
             }
-            else{Toast.makeText(requireContext(), "Buscar", Toast.LENGTH_SHORT).show()}
-
+            else{
+                findNavController().navigate(R.id.action_listFragment_to_searchFragment) }
         })
 
         builder.create().show()

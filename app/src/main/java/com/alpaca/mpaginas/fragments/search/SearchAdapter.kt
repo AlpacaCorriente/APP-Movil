@@ -1,20 +1,15 @@
-package com.alpaca.mpaginas.fragments.list
+package com.alpaca.mpaginas.fragments.search
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.alpaca.mpaginas.R
-import com.alpaca.mpaginas.fragments.search.searchFragmentDirections
 import com.alpaca.mpaginas.model.Book
 import kotlinx.android.synthetic.main.fila_custom.view.*
-import org.json.JSONException
-import java.security.AccessController.getContext
 
-class ListAdapter:RecyclerView.Adapter<ListAdapter.MyViewHolder>(){
+class SearchAdapter:RecyclerView.Adapter<SearchAdapter.MyViewHolder>(){
 
     private var bookList= emptyList<Book>()
 
@@ -37,11 +32,11 @@ class ListAdapter:RecyclerView.Adapter<ListAdapter.MyViewHolder>(){
         holder.itemView.titulo.text=currentItem.title
         holder.itemView.autor.text= currentItem.autor
         holder.itemView.paginas.text=currentItem.pages.toString()
+
         // esto hace que la lista que despliega los libros pueda se clickeada y desencadenar una acción en este caso es llamar a update
         holder.itemView.filaLayout.setOnClickListener{
-            val action= ListFragmentDirections.actionListFragmentToUpdateFragment(currentItem)
+            val action= searchFragmentDirections.actionSearchFragmentToAddFragment(currentItem)
             holder.itemView.findNavController().navigate(action)
-
         }
     }
     fun setData(book: List<Book>){

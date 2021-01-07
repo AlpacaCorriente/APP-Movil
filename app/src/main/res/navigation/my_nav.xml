@@ -5,6 +5,10 @@
     android:id="@+id/my_nav"
     app:startDestination="@id/listFragment">
 
+    <action android:id="@+id/update_action_MainFragment"
+        app:destination="@id/updateFragment"
+        />
+
     <fragment
         android:id="@+id/listFragment"
         android:name="com.alpaca.mpaginas.fragments.list.ListFragment"
@@ -16,15 +20,21 @@
         <action
             android:id="@+id/action_listFragment_to_updateFragment"
             app:destination="@id/updateFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
     </fragment>
     <fragment
         android:id="@+id/addFragment"
         android:name="com.alpaca.mpaginas.fragments.add.AddFragment"
-        android:label="AgregarLibro"
+        android:label="Agregar Libro"
         tools:layout="@layout/fragment_add" >
         <action
             android:id="@+id/action_addFragment_to_listFragment"
             app:destination="@id/listFragment" />
+        <argument
+            android:name="currentBook"
+            app:argType="com.alpaca.mpaginas.model.Book" />
     </fragment>
     <fragment
         android:id="@+id/updateFragment"
@@ -37,5 +47,20 @@
         <argument
             android:name="currentBook"
             app:argType="com.alpaca.mpaginas.model.Book" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.alpaca.mpaginas.fragments.search.searchFragment"
+        android:label="Buscar Libro"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_listFragment"
+            app:destination="@id/listFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_addFragment"
+            app:destination="@id/addFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_updateFragment"
+            app:destination="@id/updateFragment" />
     </fragment>
 </navigation>

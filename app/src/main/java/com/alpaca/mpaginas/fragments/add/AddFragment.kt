@@ -10,14 +10,19 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.alpaca.mpaginas.R
+import com.alpaca.mpaginas.fragments.update.UpdateFragmentArgs
 import com.alpaca.mpaginas.model.Book
 import com.alpaca.mpaginas.viewmodel.BookViewModel
 import kotlinx.android.synthetic.main.fragment_add.*
 import kotlinx.android.synthetic.main.fragment_add.view.*
+import kotlinx.android.synthetic.main.fragment_update.view.*
 
 
 class AddFragment :Fragment(){
+
+    private val args by navArgs<AddFragmentArgs>()
     private lateinit var mBookViewModel: BookViewModel
 
     override fun onCreateView(
@@ -28,6 +33,9 @@ class AddFragment :Fragment(){
         val view = inflater.inflate(R.layout.fragment_add, container, false)
 
         mBookViewModel = ViewModelProvider(this).get(BookViewModel::class.java)
+        view.ditTextTitleBook.setText(args.currentBook.title)
+        view.ditTextAutorBook.setText(args.currentBook.autor)
+        view.ditTextPagesBook.setText(args.currentBook.pages.toString())
         view.button_add.setOnClickListener{
             insertDataToDatabase()
         }
@@ -49,7 +57,7 @@ class AddFragment :Fragment(){
             )
             // agregar Libro a la Base de datos
             mBookViewModel.addBook(book)
-            Toast.makeText(requireContext(), "Libro Agreado con exito", Toast.LENGTH_LONG ).show()
+            Toast.makeText(requireContext(), "Libro agregado con exito", Toast.LENGTH_LONG ).show()
 
             // luego de agregar el libro vuelve a la panatalla principal
             findNavController().navigate(R.id.action_addFragment_to_listFragment)
