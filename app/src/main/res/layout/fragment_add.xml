@@ -9,47 +9,54 @@
 
     <EditText
         android:id="@+id/ditTextTitleBook"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:accessibilityPaneTitle="@string/libro_por_leer"
         android:ems="10"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:hint="@string/titulo"
+        android:importantForAutofill="no"
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.35000002"
-        android:importantForAutofill="no" />
+        app:layout_constraintVertical_bias="0.35000002" />
 
     <EditText
         android:id="@+id/ditTextAutorBook"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="@string/autor"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.481"
-        android:importantForAutofill="no" />
+        app:layout_constraintVertical_bias="0.481" />
 
 
     <EditText
         android:id="@+id/ditTextPagesBook"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="number"
         android:hint="@string/paginas"
+        android:importantForAutofill="no"
+        android:inputType="number"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.596"
-        android:importantForAutofill="no" />
+        app:layout_constraintVertical_bias="0.596" />
 
 
     <Button
@@ -62,4 +69,46 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.84000003" />
+
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/button_add"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ditTextPagesBook"
+        app:layout_constraintVertical_bias="0.43">
+
+
+        <RadioButton
+            android:id="@+id/radioButtonBiblioteca"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/biblioteca"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:checked="true"/>
+        <RadioButton
+            android:id="@+id/radioButtonLeyendo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Leyendo"
+
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>/>
+        <RadioButton
+            android:id="@+id/radioButtonLeidos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/leidos"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+            />
+
+    </RadioGroup>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

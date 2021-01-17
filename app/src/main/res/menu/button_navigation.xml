@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/listBiblioteca"
+        android:title="@string/biblioteca" android:icon="@drawable/ic_library_books"
+        />
+    <item
+        android:id="@+id/listFragment"
+        android:title="@string/leyendo"
+        android:icon="@drawable/ic_home"
+        />
+    <item
+        android:id="@id/listLeidos"
+        android:title="@string/leidos"
+        android:icon="@drawable/ic_reads"
+        />
+</menu>

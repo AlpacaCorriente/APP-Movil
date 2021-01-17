@@ -13,7 +13,7 @@
         android:id="@+id/listFragment"
         android:name="com.alpaca.mpaginas.fragments.list.ListFragment"
         android:label="Lista"
-        tools:layout="@layout/fragment_list" >
+        tools:layout="@layout/fragment_list">
         <action
             android:id="@+id/action_listFragment_to_addFragment"
             app:destination="@id/addFragment" />
@@ -62,5 +62,35 @@
         <action
             android:id="@+id/action_searchFragment_to_updateFragment"
             app:destination="@id/updateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listBiblioteca"
+        android:name="com.alpaca.mpaginas.fragments.list.listBiblioteca"
+        android:label="fragment_list_biblioteca"
+        tools:layout="@layout/fragment_list_biblioteca" >
+        <action
+            android:id="@+id/action_listBiblioteca_to_searchFragment"
+            app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_listBiblioteca_to_addFragment"
+            app:destination="@id/addFragment" />
+        <action
+            android:id="@+id/action_listBiblioteca_to_updateFragment"
+            app:destination="@id/updateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listLeidos"
+        android:name="com.alpaca.mpaginas.fragments.list.listLeidos"
+        android:label="fragment_list_leidos"
+        tools:layout="@layout/fragment_list_leidos" >
+        <action
+            android:id="@+id/action_listLeidos_to_updateFragment"
+            app:destination="@id/updateFragment" />
+        <action
+            android:id="@+id/action_listLeidos_to_addFragment"
+            app:destination="@id/addFragment" />
+        <action
+            android:id="@+id/action_listLeidos_to_searchFragment"
+            app:destination="@id/searchFragment" />
     </fragment>
 </navigation>

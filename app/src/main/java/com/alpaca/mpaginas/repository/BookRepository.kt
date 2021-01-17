@@ -8,10 +8,19 @@ import kotlinx.coroutines.Dispatchers
 class BookRepository(private val bookDao: BookDao) {
 
     val getAllData: LiveData<List<Book>> = bookDao.getAllData()
+
+    val getInLibraryBook: LiveData<List<Book>> = bookDao.getInLibraryBook()
+
+    val getReadsBook: LiveData<List<Book>> = bookDao.getReadsBook()
+
     suspend fun addBook (book: Book){
 
         bookDao.addBook(book)
     }
+
+
+
+
     suspend fun  updateBook(book: Book){
 
         bookDao.updateBook(book)

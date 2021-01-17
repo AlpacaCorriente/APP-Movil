@@ -24,6 +24,7 @@ class AddFragment :Fragment(){
 
     private val args by navArgs<AddFragmentArgs>()
     private lateinit var mBookViewModel: BookViewModel
+    var state = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,10 +34,26 @@ class AddFragment :Fragment(){
         val view = inflater.inflate(R.layout.fragment_add, container, false)
 
         mBookViewModel = ViewModelProvider(this).get(BookViewModel::class.java)
+
         view.ditTextTitleBook.setText(args.currentBook.title)
         view.ditTextAutorBook.setText(args.currentBook.autor)
         view.ditTextPagesBook.setText(args.currentBook.pages.toString())
+
+
         view.button_add.setOnClickListener{
+            if (radioButtonBiblioteca.isChecked){
+                state = 0
+            }
+            else if(radioButtonLeyendo.isChecked){
+                state = 1
+            }
+            else if(radioButtonLeidos.isChecked){
+                state=2
+            }
+            else {
+                Toast.makeText(requireContext(), "Seleccione en que seccion guardará el libro", Toast.LENGTH_LONG ).show()
+            }
+
             insertDataToDatabase()
         }
     return view
@@ -46,14 +63,16 @@ class AddFragment :Fragment(){
         val titulo = ditTextTitleBook.text.toString()
         val autor =  ditTextAutorBook.text.toString()
         val pages = ditTextPagesBook.text
-        if(inputCheck(titulo,autor,pages )){
+        val states = state
+        if(inputCheck(titulo,autor,pages)){
 
             val book= Book(
                 0,
                 titulo,
                 autor,
                 Integer.parseInt(pages.toString()),
-                0
+                0,
+                state
             )
             // agregar Libro a la Base de datos
             mBookViewModel.addBook(book)
@@ -67,6 +86,7 @@ class AddFragment :Fragment(){
         }
 
     }
+    // función para comprobar si el input es valido
     private fun inputCheck(titulo: String, autor:String, pages: Editable ):Boolean{
         return !(TextUtils.isEmpty((titulo)) && TextUtils.isEmpty((autor)) && pages.isEmpty())
 

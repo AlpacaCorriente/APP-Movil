@@ -37,7 +37,7 @@ class ListAdapter:RecyclerView.Adapter<ListAdapter.MyViewHolder>(){
         holder.itemView.titulo.text=currentItem.title
         holder.itemView.autor.text= currentItem.autor
         holder.itemView.paginas.text=currentItem.pages.toString()
-        // esto hace que la lista que despliega los libros pueda se clickeada y desencadenar una acción en este caso es llamar a update
+        // esto hace que la lista que despliega los libros pueda ser clickeada y desencadenar una acción en este caso es llamar a update
         holder.itemView.filaLayout.setOnClickListener{
             val action= ListFragmentDirections.actionListFragmentToUpdateFragment(currentItem)
             holder.itemView.findNavController().navigate(action)

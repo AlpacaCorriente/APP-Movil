@@ -16,6 +16,7 @@ data class Book(
     val autor: String,
     val pages: Int,
     val currentPage: Int,
+    val state: Int,
     @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
     var image: ByteArray? = null
 ): Parcelable

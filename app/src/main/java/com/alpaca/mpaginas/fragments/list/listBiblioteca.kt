@@ -17,7 +17,7 @@ import com.alpaca.mpaginas.model.Book
 import com.alpaca.mpaginas.viewmodel.BookViewModel
 import kotlinx.android.synthetic.main.fragment_list.view.*
 
-class ListFragment :Fragment(){
+class listBiblioteca :Fragment(){
     private lateinit var mBookViewModel: BookViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,7 +33,7 @@ class ListFragment :Fragment(){
 
         // book view model
         mBookViewModel=ViewModelProvider(this).get(BookViewModel::class.java)
-        mBookViewModel.getAllData.observe(viewLifecycleOwner, Observer{ book ->
+        mBookViewModel.getInLibraryBook.observe(viewLifecycleOwner, Observer{ book ->
             adapter.setData(book)
         })
 
@@ -47,31 +47,26 @@ class ListFragment :Fragment(){
     // dialogo para seleccionar como se agregará un libro
     private fun addBook() {
         val book = Book(
-                id=0,
-                title = "",
-                autor= "",
-                pages = 0,
-                currentPage =0,
-            state = 0
+            id=0,
+            title = "",
+            autor= "",
+            pages = 0,
+            currentPage =0,
+            state=0
         )
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle("Agregar libro" )
         builder.setItems(arrayOf("Manualmente", "Buscar"), DialogInterface.OnClickListener{ dialog, which ->
 
             if(which==0){
-                val action= ListFragmentDirections.actionListFragmentToAddFragment(book)
+                val action= listBibliotecaDirections.actionListBibliotecaToAddFragment(book)
                 findNavController().navigate(action)
             }
             else{
-                findNavController().navigate(R.id.action_listFragment_to_searchFragment) }
+                findNavController().navigate(R.id.action_listBiblioteca_to_searchFragment) }
         })
 
         builder.create().show()
 
     }
- }
-
-
-
-
-
+}

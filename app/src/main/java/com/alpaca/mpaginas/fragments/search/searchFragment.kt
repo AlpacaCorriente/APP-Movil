@@ -96,8 +96,9 @@ class searchFragment : Fragment() {
                             id=0,
                             title = infoBook.getString("title"),
                             autor=  infoBook.getJSONArray("authors").getString(0),
-                            pages = 0,
-                            currentPage =0
+                            pages = infoBook.getString("pageCount").toInt(),
+                            currentPage =0,
+                            state=0
                         )
 
                         foundBooks.add(book)

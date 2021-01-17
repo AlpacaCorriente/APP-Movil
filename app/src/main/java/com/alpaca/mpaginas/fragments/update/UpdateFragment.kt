@@ -49,7 +49,7 @@ private fun updateItem (){
     val pagina = Integer.parseInt(updateTextPagesBook.text.toString())
         if (inputCheck(titulo, autor ,updateTextPagesBook.text )){
             // crea el objeto Book
-            val updateBook = Book(args.currentBook.id, titulo, autor, pagina, 0)
+            val updateBook = Book(args.currentBook.id, titulo, autor, pagina, 0,0)
             // actualiza el libro actual (currentBook)
             mBookViewModel.updateBook(updateBook)
             Toast.makeText(requireContext(), "Se a actualizado el libro", Toast.LENGTH_SHORT).show()
