@@ -10,7 +10,7 @@ class BookRepository(private val bookDao: BookDao) {
     val getAllData: LiveData<List<Book>> = bookDao.getAllData()
 
     val getInLibraryBook: LiveData<List<Book>> = bookDao.getInLibraryBook()
-
+    val getReadingBook : LiveData<List<Book>> = bookDao.getReadingBook()
     val getReadsBook: LiveData<List<Book>> = bookDao.getReadsBook()
 
     suspend fun addBook (book: Book){

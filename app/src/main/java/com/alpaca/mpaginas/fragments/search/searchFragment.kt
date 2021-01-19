@@ -88,10 +88,9 @@ class searchFragment : Fragment() {
                             e.printStackTrace()
                         }
 
-                        Log.d("VolumeInfo wea",infoBook.toString())
-                        Log.d("Image INFO", image )
-                        Toast.makeText(requireContext(), this.book, Toast.LENGTH_LONG ).show()
-                        Log.d("autors", infoBook.getJSONArray("authors").getString(0) )
+                        //Log.d("VolumeInfo",infoBook.toString())
+                        //Log.d("Image INFO", image )
+                       // Log.d("autors", infoBook.getJSONArray("authors").getString(0) )
                         val book = Book(
                             id=0,
                             title = infoBook.getString("title"),

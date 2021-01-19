@@ -27,13 +27,16 @@ class listBiblioteca :Fragment(){
         val view =inflater.inflate(R.layout.fragment_list, container, false)
         // Recyclerview
         val adapter=ListAdapter()
+
         val recyclerView = view.recyclerview
         recyclerView.adapter=adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         // book view model
+        adapter.setUser(0)
         mBookViewModel=ViewModelProvider(this).get(BookViewModel::class.java)
         mBookViewModel.getInLibraryBook.observe(viewLifecycleOwner, Observer{ book ->
+
             adapter.setData(book)
         })
 

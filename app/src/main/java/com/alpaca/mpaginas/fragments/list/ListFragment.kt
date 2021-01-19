@@ -33,7 +33,7 @@ class ListFragment :Fragment(){
 
         // book view model
         mBookViewModel=ViewModelProvider(this).get(BookViewModel::class.java)
-        mBookViewModel.getAllData.observe(viewLifecycleOwner, Observer{ book ->
+        mBookViewModel.getReadingBook.observe(viewLifecycleOwner, Observer{ book ->
             adapter.setData(book)
         })
 

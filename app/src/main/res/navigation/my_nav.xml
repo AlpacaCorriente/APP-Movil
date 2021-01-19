@@ -7,6 +7,7 @@
 
     <action android:id="@+id/update_action_MainFragment"
         app:destination="@id/updateFragment"
+
         />
 
     <fragment
@@ -23,6 +24,9 @@
         <action
             android:id="@+id/action_listFragment_to_searchFragment"
             app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_updateCurrentPageFragment"
+            app:destination="@id/updateCurrentPageFragment" />
     </fragment>
     <fragment
         android:id="@+id/addFragment"
@@ -66,7 +70,7 @@
     <fragment
         android:id="@+id/listBiblioteca"
         android:name="com.alpaca.mpaginas.fragments.list.listBiblioteca"
-        android:label="fragment_list_biblioteca"
+        android:label="Biblioteca"
         tools:layout="@layout/fragment_list_biblioteca" >
         <action
             android:id="@+id/action_listBiblioteca_to_searchFragment"
@@ -81,7 +85,7 @@
     <fragment
         android:id="@+id/listLeidos"
         android:name="com.alpaca.mpaginas.fragments.list.listLeidos"
-        android:label="fragment_list_leidos"
+        android:label="Leidos"
         tools:layout="@layout/fragment_list_leidos" >
         <action
             android:id="@+id/action_listLeidos_to_updateFragment"
@@ -93,4 +97,17 @@
             android:id="@+id/action_listLeidos_to_searchFragment"
             app:destination="@id/searchFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/updateCurrentPageFragment"
+        android:name="com.alpaca.mpaginas.fragments.UpdateCurrentPage.UpdateCurrentPageFragment"
+        android:label="Leyendo"
+        tools:layout="@layout/fragment_update_current_page" >
+        <action
+            android:id="@+id/action_updateCurrentPageFragment_to_listFragment"
+            app:destination="@id/listFragment" />
+        <argument
+            android:name="currentBook"
+            app:argType="com.alpaca.mpaginas.model.Book" />
+    </fragment>
+
 </navigation>

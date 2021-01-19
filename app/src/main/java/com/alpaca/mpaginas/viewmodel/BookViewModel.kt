@@ -14,6 +14,7 @@ class BookViewModel (application: Application): AndroidViewModel(application){
     val getAllData: LiveData <List<Book>>
     val getInLibraryBook: LiveData <List<Book>>
     val getReadsBook: LiveData <List<Book>>
+    val getReadingBook: LiveData <List<Book>>
 
     private val repository: BookRepository
 
@@ -22,6 +23,7 @@ class BookViewModel (application: Application): AndroidViewModel(application){
         repository = BookRepository(bookDao)
         getAllData = repository.getAllData
         getInLibraryBook=repository.getInLibraryBook
+        getReadingBook=repository.getReadingBook
         getReadsBook = repository.getReadsBook
 
     }

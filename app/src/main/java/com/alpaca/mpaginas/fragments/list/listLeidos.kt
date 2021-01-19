@@ -33,8 +33,10 @@ class listLeidos :Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         // book view model
+        adapter.setUser(1)
         mBookViewModel = ViewModelProvider(this).get(BookViewModel::class.java)
         mBookViewModel.getReadsBook.observe(viewLifecycleOwner, Observer { book ->
+
             adapter.setData(book)
         })
 
