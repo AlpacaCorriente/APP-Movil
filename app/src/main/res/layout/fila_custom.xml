@@ -8,54 +8,67 @@
     android:padding="24sp"
     android:id = "@+id/filaLayout">
 
-    <TextView
-        android:id="@+id/id_txt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1"
-        android:textSize="40sp"
-        android:textStyle=""
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:id="@+id/titulo"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Titulo"
+        android:text="@string/titulo"
+        android:textAlignment="center"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:layout_marginStart="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.478"
-        app:layout_constraintStart_toEndOf="@+id/id_txt"
+        app:layout_constraintHorizontal_bias="0.351"
+        app:layout_constraintStart_toEndOf="@+id/imageCoverView"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.235" />
+        app:layout_constraintVertical_bias="0.383" />
 
     <TextView
         android:id="@+id/autor"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Autor"
+        android:text="@string/autor"
+        android:textAlignment="center"
         android:textSize="15sp"
+        android:layout_marginStart="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.518"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageCoverView"
         app:layout_constraintTop_toBottomOf="@+id/titulo"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/paginas"
-        android:layout_width="58dp"
+        android:layout_width="match_parent"
         android:layout_height="15dp"
         android:layout_marginTop="1dp"
         android:layout_marginBottom="8dp"
-        android:text="Paginas"
+        android:text="@string/paginas"
 
+        android:layout_marginStart="70dp"
+
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.515"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageCoverView"
         app:layout_constraintTop_toBottomOf="@+id/autor" />
+
+    <ImageView
+        android:id="@+id/imageCoverView"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="4dp"
+        android:text="@string/_1"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        android:textStyle=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/todo" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

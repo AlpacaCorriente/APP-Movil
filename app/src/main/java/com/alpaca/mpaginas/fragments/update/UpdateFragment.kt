@@ -13,12 +13,16 @@ import androidx.navigation.fragment.navArgs
 import com.alpaca.mpaginas.R
 import com.alpaca.mpaginas.model.Book
 import com.alpaca.mpaginas.viewmodel.BookViewModel
+import kotlinx.android.synthetic.main.fragment_add.*
 import kotlinx.android.synthetic.main.fragment_update.*
+import kotlinx.android.synthetic.main.fragment_update.radioButtonBiblioteca
+import kotlinx.android.synthetic.main.fragment_update.radioButtonLeidos
+import kotlinx.android.synthetic.main.fragment_update.radioButtonLeyendo
 import kotlinx.android.synthetic.main.fragment_update.view.*
 
 
 class UpdateFragment : Fragment() {
-
+    var state = 0
 private val args by navArgs<UpdateFragmentArgs>()
     private lateinit var mBookViewModel: BookViewModel
 
@@ -33,7 +37,33 @@ private val args by navArgs<UpdateFragmentArgs>()
         view.updateTextTitleBook.setText(args.currentBook.title)
         view.updateTextAutorBook.setText(args.currentBook.autor)
         view.updateTextPagesBook.setText(args.currentBook.pages.toString())
+
+        if(args.currentBook.state==0){
+            view.radioButtonBiblioteca.isChecked=true
+        }
+        else if (args.currentBook.state==1){
+            view.radioButtonLeyendo.isChecked=true
+        }
+        else{
+            view.radioButtonLeidos.isChecked=true
+        }
+
+
         view.update_button.setOnClickListener{
+
+            if (radioButtonBiblioteca.isChecked){
+                state = 0
+            }
+            else if(radioButtonLeyendo.isChecked){
+                state = 1
+            }
+            else if(radioButtonLeidos.isChecked){
+                state=2
+            }
+            else {
+                Toast.makeText(requireContext(), "Seleccione en que seccion guardará el libro", Toast.LENGTH_LONG ).show()
+            }
+
             updateItem()
         }
 
@@ -49,7 +79,7 @@ private fun updateItem (){
     val pagina = Integer.parseInt(updateTextPagesBook.text.toString())
         if (inputCheck(titulo, autor ,updateTextPagesBook.text )){
             // crea el objeto Book
-            val updateBook = Book(args.currentBook.id, titulo, autor, pagina, 0,0)
+            val updateBook = Book(args.currentBook.id, titulo, autor, pagina, 0,state)
             // actualiza el libro actual (currentBook)
             mBookViewModel.updateBook(updateBook)
             Toast.makeText(requireContext(), "Se a actualizado el libro", Toast.LENGTH_SHORT).show()

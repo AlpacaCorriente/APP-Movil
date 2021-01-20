@@ -28,7 +28,6 @@ class SearchAdapter:RecyclerView.Adapter<SearchAdapter.MyViewHolder>(){
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         // se recupera el libro que se quiere mostrar
         val currentItem= bookList[position]
-        holder.itemView.id_txt.text=currentItem.id.toString()
         holder.itemView.titulo.text=currentItem.title
         holder.itemView.autor.text= currentItem.autor
         holder.itemView.paginas.text=currentItem.pages.toString()

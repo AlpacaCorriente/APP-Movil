@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.fragment_update_current_page.view.*
 class UpdateCurrentPageFragment : Fragment() {
     private val args by navArgs<UpdateFragmentArgs>()
     private lateinit var mBookViewModel: BookViewModel
-
+    var state = 1
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
@@ -38,7 +38,23 @@ class UpdateCurrentPageFragment : Fragment() {
         view.TextCurrentPage.setText(args.currentBook.currentPage.toString())
 
         view.guardar_button.setOnClickListener{
-           updateItem()
+
+            if (radioCurrentStateBiblioteca.isChecked){
+                state = 0
+            }
+            else if(radioCurrentStateLeyendo.isChecked){
+                state = 1
+            }
+            else if(radioCurrentStateLeidos.isChecked){
+                state=2
+            }
+            else {
+                Toast.makeText(requireContext(), "Seleccione en que seccion guardará el libro", Toast.LENGTH_LONG ).show()
+            }
+
+            updateItem()
+
+
         }
 
         //se agrega el menu
@@ -52,8 +68,17 @@ class UpdateCurrentPageFragment : Fragment() {
         val autor =  TextAutorBook.text.toString()
         val pagina = Integer.parseInt(TextPagesBook.text.toString())
         val currentPage = Integer.parseInt(TextCurrentPage.text.toString())
+        var updateBook:Book
+        if(currentPage>=pagina || state ==2){
 
-        val updateBook = Book(args.currentBook.id, titulo, autor, pagina, currentPage,1)
+            updateBook = Book(args.currentBook.id, titulo, autor, pagina,0,2)
+        }
+        else if(state ==0){
+
+            updateBook = Book(args.currentBook.id, titulo, autor, pagina,0,0)
+        }
+        else{
+            updateBook = Book(args.currentBook.id, titulo, autor, pagina, currentPage,1)}
         // actualiza el libro actual (currentBook)
         mBookViewModel.updateBook(updateBook)
         // envia al vista principal

@@ -8,11 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.alpaca.mpaginas.R
 import com.alpaca.mpaginas.model.Book
 import kotlinx.android.synthetic.main.fila_custom.view.*
+import com.squareup.picasso.Picasso
 
 class ListAdapter:RecyclerView.Adapter<ListAdapter.MyViewHolder>(){
 
     private var bookList= emptyList<Book>()
-    var fragmentUser=3
+    var fragmentUser=2
 
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
@@ -29,10 +30,16 @@ class ListAdapter:RecyclerView.Adapter<ListAdapter.MyViewHolder>(){
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         // se recupera el libro que se quiere mostrar
         val currentItem= bookList[position]
-        holder.itemView.id_txt.text=currentItem.id.toString()
         holder.itemView.titulo.text=currentItem.title
         holder.itemView.autor.text= currentItem.autor
-        holder.itemView.paginas.text=currentItem.pages.toString()
+        Picasso.get().load("https://cdn.icon-icons.com/icons2/390/PNG/512/black-book_38572.png").into(holder.itemView.imageCoverView)
+        if(fragmentUser==2){
+            holder.itemView.paginas.text= currentItem.currentPage.toString()+"/"+currentItem.pages.toString()
+        }else
+        {
+            holder.itemView.paginas.text= currentItem.pages.toString()
+        }
+
         // esto hace que la lista que despliega los libros pueda ser clickeada y desencadenar una acción en este caso es llamar a update
         holder.itemView.filaLayout.setOnClickListener{
             var action =ListFragmentDirections.actionListFragmentToUpdateCurrentPageFragment(currentItem)
